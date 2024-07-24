@@ -2,23 +2,23 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>재난CCTV TEST - 07241855</title>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b56a65c62cc5707328009e0351096b36"></script>
+    <title>재난CCTV TEST - 07241905</title>
+    
 
     
 </head>
 <body>
 <div id="map" style="width:2000px;height:1000px;"></div>//%적용안됨 
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b56a65c62cc5707328009e0351096b36"></script>
 <script>
 
-var mapContainer = document.getElementById('map'); // 지도를 표시할 div  
-    var options = { 
-        center: new kakao.maps.LatLng(36.01898315734975, 129.3431394069907), // 지도의 중심좌표
-        level: 8 // 지도의 확대 레벨
-    };
+var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(36.01898315734975, 129.3431394069907),
+			level: 8
+		};
 
-var map = new kakao.maps.Map(mapContainer, options); // 지도를 생성합니다
+		var map = new kakao.maps.Map(container, options);
  
 // 마커를 표시할 위치와 title 객체 배열입니다 
 var positions = [
