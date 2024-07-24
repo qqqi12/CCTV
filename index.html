@@ -1,22 +1,450 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8"/>
-	<title>test-07241837</title>
+    <meta charset="utf-8">
+    <title>재난CCTV TEST - 07241852</title>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b56a65c62cc5707328009e0351096b36"></script>
+
+    
 </head>
 <body>
-	<div id="map" style="width:100%;height:100%;"></div>
-	
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b56a65c62cc5707328009e0351096b36"></script>
-	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(36.01898315734975, 129.3431394069907), // 지도의 중심좌표
-            level: 8 // 지도의 확대 레벨
-		};
+<div id="map" style="width:100%;height:100%;"></div>
 
-		var map = new kakao.maps.Map(container, options);
+<script>
 
-        
-	</script>
+var mapContainer = document.getElementById('map'); // 지도를 표시할 div  
+    var options = { 
+        center: new kakao.maps.LatLng(36.01898315734975, 129.3431394069907), // 지도의 중심좌표
+        level: 8 // 지도의 확대 레벨
+    };
+
+var map = new kakao.maps.Map(mapContainer, options); // 지도를 생성합니다
+ 
+// 마커를 표시할 위치와 title 객체 배열입니다 
+var positions = [
+{
+content: '<div>062.문덕_황룡짬뽕앞</div>',
+latlng: new kakao.maps.LatLng(35.9677044751387, 129.409766122095)
+},
+{
+content: '<div>063.문덕_직훈앞</div>',
+latlng: new kakao.maps.LatLng(35.9877508456088, 129.400377420997)
+},
+{
+content: '<div>064.문덕_오일뱅크앞</div>',
+latlng: new kakao.maps.LatLng(35.9863439690654, 129.401101045597)
+},
+{
+content: '<div>065.오천_청룡교</div>',
+latlng: new kakao.maps.LatLng(35.9632842059104, 129.417159127169)
+},
+{
+content: '<div>066.오천_충무교</div>',
+latlng: new kakao.maps.LatLng(35.9652028699436, 129.423788290633)
+},
+{
+content: '<div>067.문덕_힐스테이트앞</div>',
+latlng: new kakao.maps.LatLng(35.9792484746871, 129.406302765154)
+},
+{
+content: '<div>068.오천_항사교</div>',
+latlng: new kakao.maps.LatLng(35.929623559866, 129.383965112094)
+},
+{
+content: '<div>069.오천_오천고앞</div>',
+latlng: new kakao.maps.LatLng(35.9691426351829, 129.411930910555)
+},
+{
+content: '<div>070.오천_우방신세계 205동앞</div>',
+latlng: new kakao.maps.LatLng(35.9823562007062, 129.406193195025)
+},
+{
+content: '<div>071.오천_용마루정비앞</div>',
+latlng: new kakao.maps.LatLng(35.9823562007062, 129.406193195025)
+},
+{
+content: '<div>072.문덕_인덕초후문</div>',
+latlng: new kakao.maps.LatLng(35.9834318323573, 129.401481465245)
+},
+{
+content: '<div>073.제철_동촌동</div>',
+latlng: new kakao.maps.LatLng(35.9935152015801, 129.394153734468)
+},
+{
+content: '<div>074.오천_세계천_상류#01</div>',
+latlng: new kakao.maps.LatLng(35.9662815474202, 129.419195623043)
+},
+{
+content: '<div>075.오천_세계천_상류#02</div>',
+latlng: new kakao.maps.LatLng(35.9662815474202, 129.419195623043)
+},
+{
+content: '<div>076.오천_세계천_하류</div>',
+latlng: new kakao.maps.LatLng(35.9678618638248, 129.411913767201)
+},
+{
+content: '<div>001.죽장입암1교</div>',
+latlng: new kakao.maps.LatLng(36.1664465924679, 129.090596216628)
+},
+{
+content: '<div>002.상옥</div>',
+latlng: new kakao.maps.LatLng(36.2244053455716, 129.208826677553)
+},
+{
+content: '<div>003.하옥</div>',
+latlng: new kakao.maps.LatLng(36.3011300198243, 129.248449773977)
+},
+{
+content: '<div>004.기북성법령</div>',
+latlng: new kakao.maps.LatLng(36.2101849949355, 129.205252145205)
+},
+{
+content: '<div>005.기북성법령(고정)</div>',
+latlng: new kakao.maps.LatLng(36.2101849949355, 129.205252145205)
+},
+{
+content: '<div>006.수목원</div>',
+latlng: new kakao.maps.LatLng(36.2162036696408, 129.259165091)
+},
+{
+content: '<div>007.흥해</div>',
+latlng: new kakao.maps.LatLng(36.1221933577678, 129.346483485347)
+},
+{
+content: '<div>008.흥해(고정)</div>',
+latlng: new kakao.maps.LatLng(36.1221933577678, 129.346483485347)
+},
+{
+content: '<div>009.연일</div>',
+latlng: new kakao.maps.LatLng(36.0002987193551, 129.343557194507)
+},
+{
+content: '<div>010.대송</div>',
+latlng: new kakao.maps.LatLng(35.986665302948, 129.35949206402)
+},
+{
+content: '<div>011.냉천_이마트</div>',
+latlng: new kakao.maps.LatLng(35.9919543746058, 129.400244076621)
+},
+{
+content: '<div>012.냉천(고정)_이마트#01</div>',
+latlng: new kakao.maps.LatLng(35.9919543746058, 129.400244076621)
+},
+{
+content: '<div>013.냉천(고정)_이마트#02</div>',
+latlng: new kakao.maps.LatLng(35.9919543746058, 129.400244076621)
+},
+{
+content: '<div>014.오천(회전)_문덕교</div>',
+latlng: new kakao.maps.LatLng(35.9618446359257, 129.408257964745)
+},
+{
+content: '<div>015.오천(고정)_문덕교#01</div>',
+latlng: new kakao.maps.LatLng(35.9618446359257, 129.408257964745)
+},
+{
+content: '<div>016.오천(고정)_문덕교#02</div>',
+latlng: new kakao.maps.LatLng(35.9618446359257, 129.408257964745)
+},
+{
+content: '<div>017.오천양북</div>',
+latlng: new kakao.maps.LatLng(35.861419035849, 129.405469355349)
+},
+{
+content: '<div>018.오천양북(고정)</div>',
+latlng: new kakao.maps.LatLng(35.861419035849, 129.405469355349)
+},
+{
+content: '<div>019.구룡포</div>',
+latlng: new kakao.maps.LatLng(35.9956148113284, 129.565653513467)
+},
+{
+content: '<div>020.송도</div>',
+latlng: new kakao.maps.LatLng(36.0309093274926, 129.382239375231)
+},
+{
+content: '<div>021.영일대</div>',
+latlng: new kakao.maps.LatLng(36.0609055716561, 129.380108298251)
+},
+{
+content: '<div>022.흥해 용곡교</div>',
+latlng: new kakao.maps.LatLng(36.1162395239189, 129.316110620485)
+},
+{
+content: '<div>023.흥해 용곡교(고정)</div>',
+latlng: new kakao.maps.LatLng(36.1162395239189, 129.316110620485)
+},
+{
+content: '<div>024.성곡1리 마을회관</div>',
+latlng: new kakao.maps.LatLng(36.0912315056143, 129.3461638793)
+},
+{
+content: '<div>025.성곡1리 마을회관(고정)</div>',
+latlng: new kakao.maps.LatLng(36.1162395239189, 129.316110620485)
+},
+{
+content: '<div>026.냉천교_청림</div>',
+latlng: new kakao.maps.LatLng(35.994500169831, 129.401888082549)
+},
+{
+content: '<div>027.수변공원</div>',
+latlng: new kakao.maps.LatLng(35.967403190751, 129.413547453164)
+},
+{
+content: '<div>028.수변공원(고정)</div>',
+latlng: new kakao.maps.LatLng(35.967403190751, 129.413547453164)
+},
+{
+content: '<div>029.원용교</div>',
+latlng: new kakao.maps.LatLng(35.9743866171594, 129.410046250608)
+},
+{
+content: '<div>030.원용교(고정)#01</div>',
+latlng: new kakao.maps.LatLng(35.9743866171594, 129.410046250608)
+},
+{
+content: '<div>031.원용교(고정)#02</div>',
+latlng: new kakao.maps.LatLng(35.9743866171594, 129.410046250608)
+},
+{
+content: '<div>032.문덕3교</div>',
+latlng: new kakao.maps.LatLng(35.945579869587, 129.403575709701)
+},
+{
+content: '<div>033.문덕3교(고정)</div>',
+latlng: new kakao.maps.LatLng(35.945579869587, 129.403575709701)
+},
+{
+content: '<div>034.장성빗물펌프장</div>',
+latlng: new kakao.maps.LatLng(36.0647810474994, 129.378167251466)
+},
+{
+content: '<div>035.장성빗물펌프장(고정)#01</div>',
+latlng: new kakao.maps.LatLng(36.0647810474994, 129.378167251466)
+},
+{
+content: '<div>036.장성빗물펌프장(고정)#02</div>',
+latlng: new kakao.maps.LatLng(36.0647810474994, 129.378167251466)
+},
+{
+content: '<div>037.오어지</div>',
+latlng: new kakao.maps.LatLng(36.0647810474994, 129.378167251466)
+},
+{
+content: '<div>038.오어지(고정)#01</div>',
+latlng: new kakao.maps.LatLng(36.0647810474994, 129.378167251466)
+},
+{
+content: '<div>039.오어지(고정)#02</div>',
+latlng: new kakao.maps.LatLng(36.0647810474994, 129.378167251466)
+},
+{
+content: '<div>040.장기2교</div>',
+latlng: new kakao.maps.LatLng(35.8912485972424, 129.490612678399)
+},
+{
+content: '<div>041.장기2교(고정)#01</div>',
+latlng: new kakao.maps.LatLng(35.8912485972424, 129.490612678399)
+},
+{
+content: '<div>042.장기2교(고정)#02</div>',
+latlng: new kakao.maps.LatLng(35.8912485972424, 129.490612678399)
+},
+{
+content: '<div>043.죽장_송내교</div>',
+latlng: new kakao.maps.LatLng(36.1664465924679, 129.090596216628)
+},
+{
+content: '<div>044.죽장_송내교(고정)#01</div>',
+latlng: new kakao.maps.LatLng(36.1664465924679, 129.090596216628)
+},
+{
+content: '<div>045.죽장_송내교(고정)#02</div>',
+latlng: new kakao.maps.LatLng(36.1664465924679, 129.090596216628)
+},
+{
+content: '<div>046.죽장_가사리(회전)</div>',
+latlng: new kakao.maps.LatLng(36.2288265328634, 129.198773769467)
+},
+{
+content: '<div>047.대송_송동1교(회전)#01</div>',
+latlng: new kakao.maps.LatLng(35.9691385136964, 129.36207957151)
+},
+{
+content: '<div>048.대송_송동1교(회전)#02</div>',
+latlng: new kakao.maps.LatLng(35.9691385136964, 129.36207957151)
+},
+{
+content: '<div>049.동해_지바우1교(회전)</div>',
+latlng: new kakao.maps.LatLng(35.9879891964251, 129.445037946347)
+},
+{
+content: '<div>050.동해_지바우1교(고정)</div>',
+latlng: new kakao.maps.LatLng(35.9879891964251, 129.445037946347)
+},
+{
+content: '<div>051.신형산교</div>',
+latlng: new kakao.maps.LatLng(36.0079055341732, 129.373086874342)
+},
+{
+content: '<div>052.흥해_곡강교(회전)</div>',
+latlng: new kakao.maps.LatLng(36.1185623559748, 129.333461571145)
+},
+{
+content: '<div>053.흥해_곡강교(고정)</div>',
+latlng: new kakao.maps.LatLng(36.1185623559748, 129.333461571145)
+},
+{
+content: '<div>054.오천_용산교(회전)</div>',
+latlng: new kakao.maps.LatLng(35.9400153498903, 129.400159050643)
+},
+{
+content: '<div>055.대송_장동교(회전)</div>',
+latlng: new kakao.maps.LatLng(35.9592536854578, 129.352753068008)
+},
+{
+content: '<div>056.대송_만석빌라앞</div>',
+latlng: new kakao.maps.LatLng(35.9806524850529, 129.365273524956)
+},
+{
+content: '<div>057.동해_도구앞천</div>',
+latlng: new kakao.maps.LatLng(35.9885928252178, 129.442019740844)
+},
+{
+content: '<div>058.구룡포_상전천</div>',
+latlng: new kakao.maps.LatLng(35.9469723858791, 129.53431269827)
+},
+{
+content: '<div>059.구룡포_후동천(회전)#01</div>',
+latlng: new kakao.maps.LatLng(35.9855814852507, 129.543182967131)
+},
+{
+content: '<div>060.구룡포_후동천(회전)#02</div>',
+latlng: new kakao.maps.LatLng(35.9855814852507, 129.543182967131)
+},
+{
+content: '<div>061.신형산교_하류</div>',
+latlng: new kakao.maps.LatLng(36.0165337982394, 129.373650639212)
+},
+{
+content: '<div>077.자명천</div>',
+latlng: new kakao.maps.LatLng(36.0028173137658, 129.306180607406)
+},
+{
+content: '<div>078.우복천</div>',
+latlng: new kakao.maps.LatLng(35.9711800978962, 129.340608554288)
+},
+{
+content: '<div>080.양백교</div>',
+latlng: new kakao.maps.LatLng(, )
+},
+{
+content: '<div>081.장기_길등재</div>',
+latlng: new kakao.maps.LatLng(35.9401637339859, 129.443452687971)
+},
+{
+content: '<div>082.흥해_학림천_상류</div>',
+latlng: new kakao.maps.LatLng(36.0781840095047, 129.323119949903)
+},
+{
+content: '<div>083.흥해_학림천_하류</div>',
+latlng: new kakao.maps.LatLng(36.0781840095047, 129.323119949903)
+},
+{
+content: '<div>084.장기천_방산교</div>',
+latlng: new kakao.maps.LatLng(35.8883626703272, 129.476136414444)
+},
+{
+content: '<div>085.양포천</div>',
+latlng: new kakao.maps.LatLng(35.8744232664641, 129.51414953958)
+},
+{
+content: '<div>086.오천_문충천</div>',
+latlng: new kakao.maps.LatLng(35.934170831571, 129.398444098689)
+},
+{
+content: '<div>087.청림_항만교_상류</div>',
+latlng: new kakao.maps.LatLng(36.0021090122289, 129.41228958098)
+},
+{
+content: '<div>088.청림_항만교_하류</div>',
+latlng: new kakao.maps.LatLng(36.0034629430999, 129.413416616258)
+},
+{
+content: '<div>089.대련_초곡천</div>',
+latlng: new kakao.maps.LatLng(36.0513441142884, 129.331181857073)
+},
+{
+content: '<div>090.연일_송학천</div>',
+latlng: new kakao.maps.LatLng(36.0299144800368, 129.301356975015)
+},
+{
+content: '<div>091.연일_꾸꾸림천</div>',
+latlng: new kakao.maps.LatLng(36.0328606971686, 129.292022514723)
+},
+{
+content: '<div>092.선린대굴다리</div>',
+latlng: new kakao.maps.LatLng(36.0887059810519, 129.338574395275)
+},
+{
+content: '<div>093.죽장_정자천</div>',
+latlng: new kakao.maps.LatLng(36.1241529186414, 129.084526871138)
+},
+{
+content: '<div>094.흥해_곡강천_용연교</div>',
+latlng: new kakao.maps.LatLng(36.1154903312269, 129.303308688522)
+},
+{
+content: '<div>095.호미곶광장</div>',
+latlng: new kakao.maps.LatLng(36.0760830849161, 129.566531855468)
+},
+{
+content: '<div>096.기계천_성법교</div>',
+latlng: new kakao.maps.LatLng(36.178093047538, 129.199809261563)
+},
+{
+content: '<div>097.죽장_먹방교</div>',
+latlng: new kakao.maps.LatLng(36.2550861397981, 129.216409539944)
+}
+
+
+];
+
+// 마커 이미지의 이미지 주소입니다
+var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+    
+for (var i = 0; i < positions.length; i ++) {
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({
+        map: map, // 마커를 표시할 지도
+        position: positions[i].latlng // 마커의 위치
+    });
+
+    // 마커에 표시할 인포윈도우를 생성합니다 
+    var infowindow = new kakao.maps.InfoWindow({
+        content: positions[i].content // 인포윈도우에 표시할 내용
+    });
+
+    // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
+    // 이벤트 리스너로는 클로저를 만들어 등록합니다 
+    // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
+    kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+    kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+}
+
+// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
+}
+</script>
 </body>
+</html>
